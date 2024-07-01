@@ -6,6 +6,8 @@
  * another way.
  */
 
+
+var externalVal = null;
 const doWork = (resolve, reject) => {
     setTimeout(() => {
         resolve("Hello World")
@@ -25,9 +27,11 @@ async function doAllTheWork() {
 
     const otherText = new Promise(doOtherWork);
     const text2 = await otherText;
+    externalVal = await otherText;
     console.log(text2);
 }
 
 doAllTheWork();
 
+console.log('External: ', externalVal)
 console.log("Done!");
